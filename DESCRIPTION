@@ -1,0 +1,16 @@
+Package: experimentDB
+Type: Package
+Title: Simple "database" construction and filtering
+Version: 0.1.0
+Authors@R: c(
+  person("Fedorec", "Alex J H", email = "alexander.fedorec.13@ucl.ac.uk", role = c("aut", "cre")))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: A simple set of function for creating a "database" of experiments carried out, and then filtering experimental results.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  dplyr,
+  utils,
+  rlang
+RoxygenNote: 7.1.1
