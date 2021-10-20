@@ -11,7 +11,7 @@
 #'
 make_experiment_db <- function(path = "*/*/data/*/metadata"){
   layout_files <- list.files(path = Sys.glob(path),
-                             pattern = utils::glob2rx("*layout.csv"),
+                             pattern = utils::glob2rx("*layout*.csv"),
                              full.names = T, all.files = T)
 
   experiment_db <- c()
@@ -80,7 +80,7 @@ filter_experiment_db <- function(filters, experiment_db = "experiment_database.c
 #'
 filter_experiments <- function(filters, path = "*/*/data/*/metadata"){
   layout_files <- list.files(path = Sys.glob(path),
-                             pattern = utils::glob2rx("*layout.csv"),
+                             pattern = utils::glob2rx("*layout*.csv"),
                              full.names = T, all.files = T)
 
   filtered_locations <- c()
