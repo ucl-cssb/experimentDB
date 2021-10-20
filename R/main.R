@@ -28,13 +28,13 @@ make_experiment_db <- function(path = "*/*/data/*/metadata"){
   splt_path <- unlist(strsplit(path, "/"))
   first_star_idx <- which(splt_path == "*")[1]
   if(first_star_idx == 1){
-    out_dir <- ""
+    out_dir <- "."
   } else {
     out_dir <- do.call(file.path, as.list(splt_path[1:(first_star_idx - 1)]))
   }
 
   utils::write.csv(x = experiment_db,
-            file = paste0(out_dir, "/experiment_database.csv"),
+            file = file.path(out_dir, "experiment_database.csv"),
             na = "",
             row.names = F)
 }
