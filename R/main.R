@@ -34,9 +34,8 @@ make_experiment_db <- function(path = "*/*/data/*/metadata"){
   }
 
   utils::write.csv(x = experiment_db,
-            file = file.path(out_dir, "experiment_database.csv"),
-            na = "",
-            row.names = F)
+                   file = file.path(out_dir, "experiment_database.csv"),
+                   row.names = F)
 }
 
 
@@ -128,11 +127,12 @@ get_filtered_data <- function(filtered_locations){
     files <- Sys.glob(file.path(path, "processed", "*.csv"))
     experiment_data <- c()
     for(file in files){
+      temp <- c()
       data <- utils::read.csv(file)
 
       if("well" %in% names(data)){
-        temp <- dplyr::left_join((filtered_locations %>% dplyr::filter(.data$experiment_path == path)),
-                          data)
+        temp <- dplyr::inner_join((filtered_locations %>% dplyr::filter(.data$experiment_path == path)),
+                                 data)
 
         if(!is.null(temp)){
           if(nrow(temp) > 0){
