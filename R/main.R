@@ -124,6 +124,7 @@ filter_experiments <- function(filters, path = "*/*/data/*/metadata"){
 get_filtered_data <- function(filtered_locations){
   all_data <- c()
   for(path in unique(filtered_locations$experiment_path)){
+    print(paste("Getting files from", path))
     files <- Sys.glob(file.path(path, "processed", "*.csv"))
     experiment_data <- c()
     for(file in files){
@@ -131,6 +132,7 @@ get_filtered_data <- function(filtered_locations){
       data <- utils::read.csv(file)
 
       if("well" %in% names(data)){
+        print(paste("Extracting data from", file))
         temp <- dplyr::inner_join((filtered_locations %>% dplyr::filter(.data$experiment_path == path)),
                                  data)
 
